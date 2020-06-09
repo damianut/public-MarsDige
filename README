@@ -54,6 +54,7 @@ Jeśli wpiszemy w pierwszym endpoint datę lub zakres dat w których
 odbyło się polskie święto, w czasie którego jakikolwiek z łazików zrobił zdjęcie
 to uzyskamy `id` tego zdjęcia w JSON.
 
+
 .4. Aby przetestować projekt na własnym serwerze należy:
 .4.1. Sklonować całe repozytorium `https://github.com/damianut/MarsDige`
 .4.2. W folderze ze sklonowanym repozytorium wykonać komendę `composer install`,
@@ -80,6 +81,7 @@ do bazy danych `nasa_data`/
 bazy danych
 .4.9. Wysłać zapytanie zgodnie z opisem z FrontController.php lub README
 (o ile serwer nasłuchuje adres i port podany w .4.6.)
+
 
 .5. Uwagi:
 .5.1. Nie skorzystałem z 'curl_multi_init', bo NASA blokuje za dużą liczbę
