@@ -1,13 +1,7 @@
-//OPIS PROJEKTU "damianut/MarsDige"
-
 .1. Wymagania:
-
 -serwer HTTP (w README jest opisane korzystanie z Symfony Development Server)
-
 -serwer MySQL (korzystałem z MySQL Community Server)
-
 -Composer (do instalacji paczek Symfony)
-
 -przeglądarka i połączenie z Internetem
 
 
