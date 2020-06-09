@@ -77,10 +77,10 @@ do bazy danych `nasa_data`/
 `127.0.0.1:8000`
 .4.8. Wejść na stronę `127.0.0.1:8000/refresh_database` w celu aktualizacji
 bazy danych
-.4.9. Wysłać zapytanie zgodnie z `//Opis projektu "damianut/MarsDige"`
+.4.9. Wysłać zapytanie zgodnie z opisem z FrontController.php lub README
 (o ile serwer nasłuchuje adres i port podany w .4.6.)
 
-.5. Komentarze na temat rozwiązania zadania:
+.5. Uwagi:
 .5.1. Nie skorzystałem z 'curl_multi_init', bo NASA blokuje za dużą liczbę
 połączeń w krótkim czasie.
 .5.2. Ze względu na powyższe (.5.2.), aktualizacja bazy danych może trochę
