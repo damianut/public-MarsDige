@@ -92,7 +92,7 @@ class FrontController extends AbstractController
    * (3) to get all photos: 
    *     127.0.0.1/query
    * 
-   * You can add the `rover` and` camera` criteria to the query. 
+   * You can add the `rover` and`camera` criteria to the query. 
    * `rover` is a rover whose camera took the photos; 
    * a `camera` is the camera that took a photos 
    * (by adding only the `camera` criterion to one from (1), (2), (3)
