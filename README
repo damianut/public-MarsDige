@@ -78,7 +78,7 @@ do bazy danych `nasa_data`/
 .4.7. Uruchomić Symfony Developer Server. Powinien on nasłuchiwać adres i port:
 `127.0.0.1:8000`
 .4.8. Wejść na stronę `127.0.0.1:8000/refresh_database` w celu aktualizacji
-bazy danych
+bazy danych (to może trochę potrwać)
 .4.9. Wysłać zapytanie zgodnie z opisem z FrontController.php lub README
 (o ile serwer nasłuchuje adres i port podany w .4.6.)
 
