@@ -86,6 +86,5 @@ bazy danych (to może trochę potrwać)
 .5. Uwagi:
 .5.1. Nie skorzystałem z 'curl_multi_init', bo NASA blokuje za dużą liczbę
 połączeń w krótkim czasie.
-.5.2. Ze względu na powyższe (.5.2.), aktualizacja bazy danych może trochę
-potrwać.
+.5.2. Ze względu na powyższe (.5.2.), aktualizacja bazy danych trochę trwa.
 /*............................................................................*/
