@@ -1,0 +1,49 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    app.days.404: "There is no Polish holidays in typed date or date range."
+    app.holidays.refreshed: "List of photos taken during polish holidays was refresh."
+    app.holidays.part: "\nPhotos downloading was successful for another holidays."
+    app.photos.single: 'Type ?id=number in query to take info about photo with typed id'
+    app.db.list: "unable to show list of polish holidays. Send to admin this whole message to solve this problem."
+    app.db.503: 'unable to download data from database. Send to admin this whole message to solve this problem.'
+    app.db.refresh: 'unable to refresh database. Send this whole message to admin to solve this problem.'
+    app.db.single: 'unable to download JSON with data about photo. Send this whole message to admin to solve this problem.'
+    app.db.single.404: "Photo with ID given in query didn't found."
+    app.db.update: 'Database is up to date.'
+    app.db.update.part: "\nDatabase is up to date excepting holiday(s)'s data mentioned above."
+    
+    #Catching exceptions and errors handling:
+    app.err.wanted: "Can not retrieve wanted polish holidays."
+    app.err.list: "Can not show list of polish holidays from `nasa_data`.`polish_holidays`."
+    app.err.show: "Can not 'SHOW TABLES'."
+    app.err.cre: "Can not refresh database."
+    app.err.saving: "Saving photos's data failed. Database refreshing failed."
+    app.err.dropping: "Internal error. Database refreshing failed."
+    app.err.http: "Error occured while getting JSON with photos. HTTP code: "
+    app.err.unvalid: "had unvalid data from NASA."
+    app.err.single: "Can not check ID in database."
+    
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones

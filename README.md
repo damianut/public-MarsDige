@@ -1,0 +1,122 @@
+//OPIS PROJEKTU "damianut/MarsDige"
+
+.1. Wymagania:
+
+-serwer HTTP (w README jest opisane korzystanie z Symfony Development Server)
+
+-serwer MySQL (korzystałem z MySQL Community Server)
+
+-Composer (do instalacji paczek Symfony)
+
+-przeglądarka i połączenie z Internetem
+
+
+.2. Struktura projektu:
+
+-mySQL z bazą danych `nasa_data`
+
+-uruchomiony Symfony Development Server
+
+-MarsDige (projekt Symfony)
+
+
+.3. Odniosę się teraz do trzech punktów z zadania 
+(https://github.com/hellodigers/recruitment-task-junior-symfony-developer):
+
+
+.3.1. Lista polskich świąt w 2019 roku się nie zmieni.  Dlatego nie stworzyłem
+komendy do odświeżania tej listy (a było takie polecenie w zadaniu). 
+W zamian za to stworzyłem endpoint z listą polskich świąt z mojej bazy danych:
+
+`127.0.0.1:8000/polish_holidays`
+
+
+.3.2. "Komenda" do odświeżania danych o zdjęciach 
+zrobionych w czasie polskich świąt: 
+`127.0.0.1:8000/refresh_database`
+
+
+.3.3. Korzystanie z "anonymous API with two endpoints",
+szczegółowo opisane jest w FrontController:
+
+`src/Controller/FrontController.php`
+
+
+.3.3.1. Pierwszy endpoint to następujący URL:
+
+`127.0.0.1:8000/query`
+
+Dzięki niemu możemy uzyskać dane o wszystkich zdjęciach.
+Aby uzyskać dane o obrazach spełniających pewne warunki,
+należy dodać do URL parametry opisane w FrontController.
+
+
+.3.3.2. Drugi endpoint to następujący URL:
+
+`127.0.0.1:8000/single_photo?id=`
+
+Po `=` należy wpisać `id` np:. `677817`.
+Jeśli w `nasa_data` jest zdjęcie o takim `id`, to w odpowiedzi uzyskamy JSON
+z informacjami o tym zdjęciu. Wraz z URLem zdjęcia.
+
+`id` można uzyskać, korzystając z pierwszego endpoint:
+
+`127.0.0.1:8000/query`
+
+Jeśli wpiszemy w pierwszym endpoint datę lub zakres dat w których
+odbyło się polskie święto, w czasie którego jakikolwiek z łazików zrobił zdjęcie
+to uzyskamy `id` tego zdjęcia w JSON.
+
+
+.4. Komentarze na temat rozwiązania zadań:
+
+
+.4.1. Jest trudne lub niemożliwe, aby znaleźć wszystke wartości domyślne
+programu cURL; skorzystałem z cURL w tym projekcie, ale w trakcie tworzenia
+innych poszukam innego programu tego typu.
+
+
+.4.2. Nie skorzystałem z 'curl_multi_init', bo NASA blokuje określoną liczbę
+połączeń w krótkim czasie.
+
+
+.4.3. Ze względu na powyższe (.4.2.), aktualizacja bazy danych może trochę
+potrwać.
+
+
+//IMPLEMENTACJA PROJEKTU NA WŁASNYM SYMFONY DEVELOPMENT SERVER
+
+Aby przetestować projekt na własnym serwerze należy:
+
+.1. Sklonować całe repozytorium `https://github.com/damianut/MarsDige`
+
+.2. W folderze ze sklonowanym repozytorium wykonać komendę `composer install`,
+czyli zainstalować zależności.
+
+.3. Utworzyć na swoim serwerze mySQL bazę danych `nasa_data` z metodą
+porównywania napisów: `utf8mb4_polish_ci`
+
+.4. Utworzyć użytkownika, który będzie miał wszystkie uprawnienia do `nasa_data`
+
+.5. Zaimportować do tej bazy plik `nasa_data.sql` z pobranego repozytorium.
+To może trochę potrwać.
+Ten plik zawiera tylko część tabeli, aby móc przetestować pobieranie zdjęć - 
+reszta zostanie utworzona po uruchomieniu odpowiedniej "komendy".
+
+.6. Utworzyć plik '.env.local' i zapisać w nim następujące dane:
+DB_HOST={adres hosta, np: 127.0.0.1}
+DB_USER={login}
+DB_PASS={hasło}
+DB_NAME={nazwa bazy danych}
+
+Gdzie '{login}' to nazwa utworzonego użytkownika z wszystkimi uprawnieniami
+do bazy danych `nasa_data`/
+  
+.7. Uruchomić Symfony Developer Server. Powinien on nasłuchiwać adres i port:
+`127.0.0.1:8000`
+ 
+.8. Wejść na stronę `127.0.0.1:8000/refresh_database` w celu aktualizacji
+bazy danych
+
+.9. Wysłać zapytanie zgodnie z `//Opis projektu "damianut/MarsDige"`
+(o ile serwer nasłuchuje adres i port podany w .6.)
