@@ -60,7 +60,8 @@ to uzyskamy `id` tego zdjęcia w JSON.
 czyli zainstalować zależności.
 .4.3. Utworzyć na swoim serwerze mySQL bazę danych `nasa_data` z metodą
 porównywania napisów: `utf8mb4_polish_ci`
-.4.4. Utworzyć użytkownika, który będzie miał wszystkie uprawnienia do `nasa_data`
+.4.4. Utworzyć użytkownika, który będzie miał wszystkie uprawnienia do
+`nasa_data`
 .4.5. Zaimportować do tej bazy plik `nasa_data.sql` z pobranego repozytorium.
 To może trochę potrwać.
 Ten plik zawiera tylko część tabeli, aby móc przetestować pobieranie zdjęć - 
